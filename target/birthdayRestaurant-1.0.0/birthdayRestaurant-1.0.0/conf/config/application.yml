@@ -1,0 +1,19 @@
+
+spring:
+  application:
+    name: birthdayRestaurant
+  data:
+    mongodb:
+      database: birthdayRestaurant
+      host: 127.0.0.1
+      port: 27017
+  resources:
+    static-locations: file:C:\Users\apple\Downloads\dist(1)\dist
+server:
+  port: 8081
+  servlet:
+    context-path: /birthdayRestaurant
+
+socketio:
+  host: localhost
+  port: 9099
