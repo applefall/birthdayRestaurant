@@ -30,8 +30,7 @@ public class BirthdayServiceImpl implements BirthdayService {
         birthdayInfo.setArrivalTime(LocalDateTime.now());
         mongoTemplate.save(birthdayInfo);
 
-        Query query = new Query()
-                .addCriteria(Criteria.where("restaurantName").all(restaurantName));
+        Query query = new Query();
 
         long count = mongoTemplate.count(query, BirthdayInfo.class);
 
