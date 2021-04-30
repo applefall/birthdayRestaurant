@@ -1,0 +1,29 @@
+{
+  "projectName": "birthdayRestaurant",
+  "socketIoUrl": "http://115.236.178.141:9099",
+  "barrage": {
+
+  },
+  "discount": 30,
+  "languages": {
+    "locale": "en",
+    "messages": {
+      "zh": {
+        "celebrated": "寿星总人数",
+        "discounted": "寿星折扣总数（￥）",
+        "dialogue": "来和我们一起庆祝生日吧！",
+        "man": "{customer}先生",
+        "woman": "{customer}女士",
+        "barrage": "在{restaurantName}号餐厅第{tableNumber}桌过生日！"
+      },
+      "en": {
+        "celebrated": "Total Birthdays Celebrated",
+        "discounted": "Total Birthdays Discounted($)",
+        "dialogue": "Celebrate Your Birthday With Us!",
+        "man": "Mr. {customer}",
+        "woman": "Ms. {customer}",
+        "barrage": " celebrating birthday at {restaurantName} Favor Taste Table {tableNumber} !"
+      }
+    }
+  }
+}
