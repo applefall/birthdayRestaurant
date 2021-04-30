@@ -35,34 +35,63 @@
 
     <build>
         <plugins>
-            <!-- 使用assembly插件打可运行jar和tar.gz包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
-                            <!-- 工程主入口 -->
-                            <mainClass>org.example.birthdayRestaurant.Start</mainClass>
                             <addClasspath>true</addClasspath>
-                            <!-- 此处如果设置，会在Manifest.MF文件中的引入jar包前加上此前缀，此处我注释掉了，否则可运行jar要放在lib同级目录而不是lib里面 -->
-                            <!-- <classpathPrefix>lib/</classpathPrefix> -->
+                            <classpathPrefix>lib</classpathPrefix>
+                            <!-- 程序启动入口 -->
+                            <mainClass>org.example.birthdayRestaurant.Start</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>./</Class-Path>
                         </manifestEntries>
                     </archive>
+                    <excludes>
+                        <exclude>config/**</exclude>
+                        <exclude>logback.xml</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
                 <configuration>
-                    <!-- 不添加assembly的id到打包后的文件名称中 -->
+                    <!-- not append assembly id in release file name -->
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptors>
-                        <!-- assembly.xml主要包含内容：打包后的文件格式、都包含哪些文件、不同文件的目录(如bin、lib、conf、README.md)、权限等 -->
-                        <descriptor>src/main/resources/assembly.xml</descriptor>
+                        <!-- 注意这里的路径 -->
+                        <descriptor>src/main/resources/package.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
